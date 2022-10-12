@@ -2,7 +2,7 @@ using UnityEngine;
 public static class DataManager
 {
     private static Data data;
-    public static Data Data
+    public static Data DataSO
     {
         get
         {
