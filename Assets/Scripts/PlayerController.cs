@@ -1,32 +1,55 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IListener
 {
-    private int currentPlace = 0;
+    public static int currentPlace { get; private set; } = 0;
     private float verticalOffset;
-    private float lastJumpTime = -1;
     private Vector3 mouseDownPosition;
     private bool isMoving = false;
+    private bool isAlive = false;
+
+    private void Awake()
+    {
+        MessagesManager.Follow(this);
+    }
+
+    private void OnDestroy()
+    {
+        MessagesManager.UnFollow(this);
+    }
 
     private void Start()
     {
         verticalOffset = transform.localScale.y / 2 + DataManager.DataSO.stepSize.y / 2;
-        transform.position = GetTargetPosition();
+    }
+
+    private void PlaceOnStart()
+    {
+        StopAllCoroutines();
+        isMoving = false;
+        isAlive = true;
+        currentPlace = 0;
+        var position = GetTargetPosition();
+        position.x = 0;
+        transform.position = position;
     }
 
     private void Update()
     {
+        if (!isAlive)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownPosition = Input.mousePosition;
         }
-        if (!Input.GetMouseButtonUp(0))
+        if (!Input.GetMouseButtonUp(0) || isMoving)
         {
             return;
         }
-        if (Mathf.Abs(mouseDownPosition.x - Input.mousePosition.x) > DataManager.DataSO.magnitudeForSwipe && !isMoving)
+        if (Mathf.Abs(mouseDownPosition.x - Input.mousePosition.x) > DataManager.DataSO.magnitudeForSwipe)
         {
             if (mouseDownPosition.x + DataManager.DataSO.magnitudeForSwipe > Input.mousePosition.x)
             {
@@ -38,9 +61,8 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        else if (!isMoving)
+        else
         {
-            lastJumpTime = Time.time;
             StartCoroutine(JumpCoroutine());
         }
     }
@@ -103,5 +125,26 @@ public class PlayerController : MonoBehaviour
     private Vector3 GetTargetPosition()
     {
         return new Vector3(transform.position.x, DataManager.DataSO.stepSize.y * currentPlace + verticalOffset, currentPlace * DataManager.DataSO.stepSize.z);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isAlive)
+        {
+            MessagesManager.SendMessage(new EndMessage(currentPlace));
+        }
+    }
+
+    public void GetMessage(Message message)
+    {
+        if (message is StopMessage)
+        {
+            StopAllCoroutines();
+            isAlive = false;
+        }
+        if (message is RestartMessage)
+        {
+            PlaceOnStart();
+        }
     }
 }

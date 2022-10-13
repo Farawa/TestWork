@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,4 +20,20 @@ public class Data : ScriptableObject
     public float moveDistance = 1;
     public float moveDuration = 0.5f;
     public float moveHeight = 1f;
+    [Header("Enemy")]
+    public GameObject EnemyPrefab;
+    public AnimationCurve enemyJumpCurve;
+    public float enemyJumpHeight = 1;
+    public List<EnemyPattern> enemyPatterns;
+    public float spawnEnemyDelay = 5f;
+    public float enemyLifeTime = 20f;
+    [Header("Leaders")]
+    public GameObject leaderPrefab;
+}
+
+[Serializable]
+public class EnemyPattern
+{
+    public float jumpDuration = 1;
+    public List<Vector2> steps;
 }

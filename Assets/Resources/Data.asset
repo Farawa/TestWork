@@ -15,3 +15,171 @@ MonoBehaviour:
   stepsRange: {x: 5, y: 20}
   stepSize: {x: 10, y: 1, z: 2}
   stepPrefab: {fileID: 7969602974423525582, guid: e36a77649f5724c4895275b4354ffae2, type: 3}
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.7149935
+      outSlope: 0.7149935
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1080193
+    - serializedVersion: 3
+      time: 0.7328937
+      value: 1
+      inSlope: 0.0017659664
+      outSlope: 0.0017659664
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.94128984
+      value: 0.50627804
+      inSlope: -4.9758716
+      outSlope: -4.9758716
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.488466
+      outSlope: -3.488466
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07799634
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpDuration: 0.25
+  jumpHeight: 0.5
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.7149935
+      outSlope: 0.7149935
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1080193
+    - serializedVersion: 3
+      time: 0.7328937
+      value: 1
+      inSlope: 0.0017659664
+      outSlope: 0.0017659664
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.94128984
+      value: 0.50627804
+      inSlope: -4.9758716
+      outSlope: -4.9758716
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.488466
+      outSlope: -3.488466
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07799634
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  magnitudeForSwipe: 50
+  moveDistance: 2
+  moveDuration: 0.15
+  moveHeight: 0.5
+  EnemyPrefab: {fileID: 7255421730122172726, guid: 3e210a8d78b96304ca82d45acfdabf52, type: 3}
+  enemyJumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.5563338
+      outSlope: 3.5563338
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.28552458
+    - serializedVersion: 3
+      time: 0.29611188
+      value: 0.99640274
+      inSlope: 0.0017659664
+      outSlope: 0.0017659664
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8317926
+      value: 0.73879653
+      inSlope: -1.8307872
+      outSlope: -1.8307872
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2697354
+    - serializedVersion: 3
+      time: 0.9967346
+      value: 0
+      inSlope: -2.9287739
+      outSlope: -2.9287739
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20702675
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyJumpHeight: 1.5
+  enemyPatterns:
+  - jumpDuration: 0.5
+    steps:
+    - {x: 1, y: 1}
+    - {x: -1, y: 1}
+    - {x: -1, y: 1}
+    - {x: 1, y: 1}
+  - jumpDuration: 0.75
+    steps:
+    - {x: 2, y: 1}
+    - {x: -2, y: 1}
+    - {x: -2, y: 1}
+    - {x: 2, y: 1}
+  - jumpDuration: 1
+    steps:
+    - {x: 1, y: 2}
+    - {x: -1, y: 2}
+    - {x: -1, y: 2}
+    - {x: 1, y: 2}
+  - jumpDuration: 0.5
+    steps:
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+  - jumpDuration: 1
+    steps:
+    - {x: 0, y: 2}
+    - {x: 0, y: 2}
+    - {x: 0, y: 2}
+    - {x: 0, y: 2}
+  spawnEnemyDelay: 1
+  enemyLifeTime: 20
+  leaderPrefab: {fileID: 9094412147285503307, guid: bc255f7ddda4bdc4ba934b1ef774e77e, type: 3}
